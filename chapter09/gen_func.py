@@ -22,7 +22,7 @@ def fib2(index):
 def gen_fib(index):
     n,a,b = 0,0,1
     while n<index:
-        yield b
+        yield b # 挂起
         a,b = b, a+b
         n += 1
 

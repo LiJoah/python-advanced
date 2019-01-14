@@ -10,11 +10,14 @@ def downloader(url):
 async def download_url(url):
     #dosomethings
     html = await downloader(url)
+    print(html)
     return html
 
 if __name__ == "__main__":
     coro = download_url("http://www.imooc.com")
     # next(None)
     coro.send(None)
+    print(coro)
+
 
 
