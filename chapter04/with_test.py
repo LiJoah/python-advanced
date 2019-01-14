@@ -14,7 +14,7 @@ def exe_try():
         print ("finally")
         # return 4
 
-#上下文管理器协议
+#上下文管理器协议, 这里也是使用了 with 的语法
 class Sample:
     def __enter__(self):
         print ("enter")

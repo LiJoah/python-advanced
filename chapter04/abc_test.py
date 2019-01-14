@@ -35,10 +35,10 @@ print(isinstance(b, A))
 # 如何去模拟一个抽象基类
 
 import abc
-from collections.abc import *
+from collections.abc import ABCMeta
 
 
-class CacheBase(metaclass=abc.ABCMeta):
+class CacheBase(metaclass=ABCMeta):
     @abc.abstractmethod
     def get(self, key):
         pass

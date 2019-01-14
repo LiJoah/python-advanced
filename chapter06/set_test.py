@@ -7,10 +7,16 @@ s = {'a','b', 'c'}
 
 #向set添加数据
 another_set = set("cef")
+print(another_set)
+s = {'a','b', 'c'}
 re_set = s.difference(another_set)
+print(re_set)
 re_set = s - another_set
+print(re_set)
 re_set = s & another_set
+print(re_set)
 re_set = s | another_set
+print(re_set)
 
 #set性能很高
 # | & -  #集合运算

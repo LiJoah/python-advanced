@@ -1,4 +1,5 @@
 #新式类
+
 class D:
     pass
 
@@ -14,4 +15,6 @@ class B(D):
 class A(B, C):
     pass
 
+# 这里是 python3 的多继承
+#A -> B -> D -> C -> E
 print(A.__mro__)

@@ -5,6 +5,7 @@ import numbers
 class Field:
     pass
 
+
 class IntField(Field):
     # 数据描述符
     def __init__(self, db_column, min_value=None, max_value=None):
@@ -57,9 +58,9 @@ class CharField(Field):
 
 
 class ModelMetaClass(type):
-    def __new__(cls, name, bases, attrs, **kwargs):
+    def __new__(mcs, name, bases, attrs, **kwargs):
         if name == "BaseModel":
-            return super().__new__(cls, name, bases, attrs, **kwargs)
+            return super().__new__(mcs, name, bases, attrs, **kwargs)
         fields = {}
         for key, value in attrs.items():
             if isinstance(value, Field):
@@ -75,14 +76,15 @@ class ModelMetaClass(type):
         attrs["_meta"] = _meta
         attrs["fields"] = fields
         del attrs["Meta"]
-        return super().__new__(cls, name, bases, attrs, **kwargs)
+        # 这里创建了类, 需要放回一个类
+        return super().__new__(mcs, name, bases, attrs, **kwargs)
 
 
 class BaseModel(metaclass=ModelMetaClass):
     def __init__(self, *args, **kwargs):
         for key, value in kwargs.items():
             setattr(self, key, value)
-        return super().__init__()
+        super().__init__()
 
     def save(self):
         fields = []
@@ -97,7 +99,7 @@ class BaseModel(metaclass=ModelMetaClass):
 
         sql = "insert {db_table}({fields}) value({values})".format(db_table=self._meta["db_table"],
                                                                    fields=",".join(fields), values=",".join(values))
-        pass
+
 
 class User(BaseModel):
     name = CharField(db_column="name", max_length=10)

@@ -2,9 +2,11 @@ class Cat(object):
     def say(self):
         print("i am a cat")
 
+
 class Dog(object):
     def say(self):
         print("i am a fish")
+
 
 class Company(object):
     def __init__(self, employee_list):
@@ -16,11 +18,14 @@ class Company(object):
     def __len__(self):
         return len(self.employee)
 
+
 company = Company(["tom", "bob", "jane"])
+
 
 class Duck(object):
     def say(self):
         print("i am a duck")
+
 
 animal_list = [Cat, Dog, Duck]
 for animal in animal_list:
@@ -37,4 +42,3 @@ name_set.add("bobby5")
 name_set.add("bobby6")
 a.extend()
 print(a)
-
