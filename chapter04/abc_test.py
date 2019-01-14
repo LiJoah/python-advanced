@@ -1,4 +1,4 @@
-#我们去检查某个类是否有某种方法
+# 我们去检查某个类是否有某种方法
 class Company(object):
     def __init__(self, employee_list):
         self.employee = employee_list
@@ -7,17 +7,20 @@ class Company(object):
         return len(self.employee)
 
 
-com = Company(["bobby1","bobby2"])
+com = Company(["bobby1", "bobby2"])
+# 检测一个类是否具有某个方法
 print(hasattr(com, "__len__"))
 
 
 class A:
     pass
 
+
 class B:
     pass
 
-#我们在某些情况之下希望判定某个对象的类型
+
+# 我们在某些情况之下希望判定某个对象的类型
 from collections.abc import Sized
 isinstance(com, Sized)
 
@@ -25,11 +28,11 @@ b = B()
 print(isinstance(b, A))
 # print(len(com))
 
-#我们需要强制某个子类必须实现某些方法
-#实现了一个web框架，集成cache(redis, cache, memorychache)
-#需要设计一个抽象基类， 指定子类必须实现某些方法
+# 我们需要强制某个子类必须实现某些方法
+# 实现了一个web框架，集成cache(redis, cache, memorychache)
+# 需要设计一个抽象基类， 指定子类必须实现某些方法
 
-#如何去模拟一个抽象基类
+# 如何去模拟一个抽象基类
 
 import abc
 from collections.abc import *
@@ -49,8 +52,13 @@ class CacheBase(metaclass=abc.ABCMeta):
 #     def set(self, key, value):
 #         raise NotImplementedError
 #
+
+
 class RedisCache(CacheBase):
     def set(self, key, value):
+        pass
+
+    def get(self, key):
         pass
 
 # redis_cache = RedisCache()
